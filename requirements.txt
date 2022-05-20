@@ -1,0 +1,4 @@
+Pillow == 9.1.0
+discord.py == 1.7.3
+python_dotenv == 0.20.0
+requests == 2.27.1
