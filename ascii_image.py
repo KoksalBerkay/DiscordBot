@@ -2,7 +2,7 @@ from PIL import Image
 
 def ascii_method(new_width, chars):
     # pass the image as command line argument
-    image_path = "D:\Repo\python-review\discord_bot\image.jpg"
+    image_path = "D:/Repo/DiscordBot/DiscordBot/image.jpg" #Change this to your bot's directory.
     img = Image.open(image_path)
 
     # resize the image
