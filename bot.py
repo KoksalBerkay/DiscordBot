@@ -54,13 +54,17 @@ async def help(msg):
     )
 
     embed.set_author(name="Help")
-    embed.add_field(name="!hello", value="Returns Hello!", inline=True)
+    embed.add_field(name="!ping", value="Returns the instant delay")
     embed.add_field(name="!inspire", value="Returns random inspirational quotes using API.", inline=True)
     embed.add_field(name="!save", value="Use this command in the comment box when uploading an image to save the image.", inline=True)
     embed.add_field(name="!ascii", value="Creates ascii art using saved image (Deletes the saved image after it's done.)", inline=True)
     embed.add_field(name="!cve", value="(ADMIN) Searchs exploits with user input using API.", inline=True)
 
     await msg.send(author, embed=embed)
+
+@client.command()
+async def ping(msg):
+    await msg.send(f'Latency is: {round(client.latency * 1000)} ms')
 
 
 @client.command()
