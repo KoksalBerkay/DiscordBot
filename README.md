@@ -13,5 +13,5 @@ First you have to create .env file and put your discord token.
 
 DISCORD_TOKEN = {your_discord_token}
 
-Then you are going to edit bot.py and update some of the lines by reading my comments.
+Then you are going to edit bot.py and ascii_image.py and update some of the lines by reading my comments.
 Finally you are going to run bot.py and that is it!
