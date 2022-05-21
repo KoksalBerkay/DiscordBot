@@ -11,7 +11,7 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
-os.chdir("D:/Repo/DiscordBot/") # Change this to your bot's directory
+os.chdir("D:\Repo\DiscordBot\DiscordBot") # Change this to your bot's directory
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
