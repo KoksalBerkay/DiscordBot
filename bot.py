@@ -11,6 +11,9 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
+import shlex
+from better_profanity import profanity
+
 os.chdir("D:\Repo\DiscordBot\DiscordBot") # Change this to your bot's directory
 
 load_dotenv()
@@ -56,6 +59,7 @@ async def help(msg):
     embed.set_author(name="Help")
     embed.add_field(name="!ping", value="Returns the instant delay")
     embed.add_field(name="!inspire", value="Returns random inspirational quotes using API.", inline=True)
+    embed.add_field(name="!meme", value="Returns memes using API. You can give a specific subreddit after writing !meme and leaving a gap")
     embed.add_field(name="!save", value="Use this command in the comment box when uploading an image to save the image.", inline=True)
     embed.add_field(name="!ascii", value="Creates ascii art using saved image (Deletes the saved image after it's done.)", inline=True)
     embed.add_field(name="!cve", value="(ADMIN) Searchs exploits with user input using API.", inline=True)
@@ -71,6 +75,38 @@ async def ping(msg):
 async def inspire(msg):
     quote = get_quote()
     await msg.send(quote)
+
+
+@client.command()
+async def meme(msg, args=""):
+    subreddit = ""
+    if len(shlex.split(args)) >= 1:
+        subreddit = shlex.split(args)[0]
+    memejson = json.loads(
+        requests.get("https://meme-api.herokuapp.com/gimme/" + subreddit).text
+    )
+    if not "url" in memejson:
+        await msg.send("The subreddit you gave me is currently not available.")
+    else:
+        i = 0
+        while memejson["nsfw"] == True:
+            memejson = json.loads(
+                requests.get(
+                    "https://meme-api.herokuapp.com/gimme/" + args).text
+            )
+            i += 1
+            if i == 10:
+                await msg.send(
+                    "Clean memes were not found after 10 tries, please try again."
+                )
+                return
+        profanity.load_censor_words()
+        await msg.send(
+            embed=discord.Embed(
+                title=profanity.censor(memejson["title"]), url=memejson["postLink"]
+            ).set_image(url=memejson["url"])
+        )
+
 
 @client.command(pass_context=True)
 #!! If you want this command available for everyone, just delete the line under this one
