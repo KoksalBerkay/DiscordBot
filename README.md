@@ -5,6 +5,7 @@ This is a Discord bot written in Python.
 - !help -> Help command.
 - !ping -> Returns the instant delay.
 - !inspire -> Returns random inspirational quotes using API.
+- !meme -> Returns memes using API. You can give a specific subreddit after writing !meme and leaving a gap.
 - !save -> Use this command in the comment box when uploading an image to save the image.
 - !ascii -> Creates ascii art using saved image (Deletes the saved image after it's done).
 - !cve -> (ADMIN) Searchs exploits with user input using API.
