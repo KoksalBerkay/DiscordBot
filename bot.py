@@ -188,7 +188,7 @@ async def ascii(msg):
 
             try:
                 asc.ascii_method(int(width_input.content), chars=new_chars)
-                with open("ascii_art.txt", "rb") as f:
+                with open("ascii_art.txt", "r") as f:
                     await msg.send(file=discord.File(f, "ascii_art.txt"))
                     sleep(5)
                     delete_image()
