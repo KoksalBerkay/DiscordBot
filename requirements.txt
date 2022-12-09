@@ -1,5 +1,5 @@
 better_profanity==0.7.0
 discord.py==1.7.3
-Pillow==9.1.1
+Pillow==9.3.0
 python-dotenv==0.20.0
 requests==2.27.1
